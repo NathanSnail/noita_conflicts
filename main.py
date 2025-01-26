@@ -3,11 +3,10 @@ import sys
 
 mods_folders = sys.argv[1:]
 used_files = {}
-mods_folders = [f"{p}/{s}/" for p in mods_folders for s in os.listdir(p)]
-for mods_folder in mods_folders:
+mods_folders = [(s, f"{p}/{s}/") for p in mods_folders for s in os.listdir(p)]
+for nice_name, mods_folder in mods_folders:
     if not os.path.exists(mods_folder + "data"):
         continue
-    nice_name = mods_folder.split("/")[-2]
     paths = []
     dirs = [f"data"]
     while len(dirs) != 0:
