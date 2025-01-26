@@ -14,6 +14,8 @@ mods_folders = [(s, f"{p}/{s}/") for p in mods_folders for s in os.listdir(p)]
 for nice_name, mods_folder in mods_folders:
     if not os.path.exists(mods_folder + "data"):
         continue
+    if os.path.exists(mods_folder + "mod_id.txt"):
+        nice_name = open(mods_folder + "mod_id.txt", "r").read()
     paths = []
     dirs = [f"data"]
     while len(dirs) != 0:
