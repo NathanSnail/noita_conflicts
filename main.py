@@ -1,7 +1,14 @@
 import os
 import sys
 
-mods_folders = sys.argv[1:]
+if len(sys.argv) == 1:
+    print("\033[31;1mWARNING: \033[0mNo mods passed, using windows defaults")
+    mods_folders = [
+        "C:/Program data (x86)/Steam/steamapps/common/Noita/mods",
+        "C:/Program data (x86)/Steam/steamapps/workshop/content/881100",
+    ]
+else:
+    mods_folders = sys.argv[1:]
 used_files = {}
 mods_folders = [(s, f"{p}/{s}/") for p in mods_folders for s in os.listdir(p)]
 for nice_name, mods_folder in mods_folders:
